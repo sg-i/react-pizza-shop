@@ -10,15 +10,6 @@ function Header() {
         </div>
       </div>
       <div className={styles.rightHeader}>
-        {/* <button>
-          <div className={styles.cartBtn + ' align-center d-flex justify-around'}>
-            <h4>520 ₽</h4>
-            <div>
-              <img width={16} height={16} src="img/cartIcon.svg" alt="" />
-              <b>2</b>
-            </div>
-          </div>
-        </button> */}
         <button className={styles.basket}>
           <div className={styles.busk}>520 ₽</div>
           <div className={styles.line}></div>

@@ -5,5 +5,22 @@
   height: 1409px;
   background-color: #fff;
   border-radius: 10px;
+  .filter{
+    height: 118px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-left: 65px;
+    padding-right: 45px;
+    .filterPizza{
+      width: 830px;
+    }
+    .sort{
+      background-color: blue;
+      width: 230px;
+    }
+  }
+  .contentWrapper{
+    padding: 0 65px;
+  }
 }
 

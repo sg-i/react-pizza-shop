@@ -42,12 +42,15 @@
             color: #fff;
             background: #FE5F1E;
             cursor: pointer;
-            font-family: Proxima Nova;
+            font-family: 'Inter', sans-serif;
             font-style: normal;
             font-weight: bold;
             font-size: 14px;
             line-height: 19px;
             font-family: 'Inter', sans-serif;
+            &:hover{
+                background: lighten(#f84b06,5%);
+            }
             .busk{
                 width: 70px;
             }
