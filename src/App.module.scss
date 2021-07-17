@@ -15,8 +15,9 @@
       width: 830px;
     }
     .sort{
-      
+      right: 0px;
       position: relative;
+      width: 240px;
       svg{
         margin-right: 6px;
         margin-bottom: 1px;
@@ -50,7 +51,7 @@
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
         border-radius: 10px;
         transition: visibility 1s ease-in-out;
-        li{
+        .itemSortNotAct{
           cursor: pointer;
           height: 38px;
           padding: 10px;
@@ -63,6 +64,19 @@
             background: rgba(254, 95, 30, 0.05);
             color: #FE5F1E;
           }
+        }
+        .itemSortAct{
+          background: rgba(254, 95, 30, 0.05);
+          color: #FE5F1E;
+          cursor: pointer;
+          height: 38px;
+          padding: 10px;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 17px;
+          letter-spacing: 0.015em;
+         
         }
       }
     }

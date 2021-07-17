@@ -3,16 +3,17 @@ import React from 'react';
 import { Header, Card, FilterBtn } from './components';
 function App() {
   const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+  const sortArr = ['популярности', 'по цене', 'по алфавиту'];
   const [sortVisible, setSortVisible] = React.useState('hidden');
   const [filterBtnChoice, setFilterBtnChoice] = React.useState(0);
+  const [sortChoice, setSortChoice] = React.useState(0);
   const onSortVisible = () => {
-    console.log('as');
     setSortVisible('visible');
   };
   const offSortVisible = () => {
-    console.log('as');
     setSortVisible('hidden');
   };
+
   return (
     <div className="clear">
       <div className={styles.wrapper}>
@@ -21,7 +22,7 @@ function App() {
           <div className={styles.filterPizza + ' d-flex'}>
             {filterPizzaArr.map((elem, index) => (
               <FilterBtn
-                key={index}
+                key={elem + index}
                 index={index}
                 setFilterBtnChoice={setFilterBtnChoice}
                 filterBtnChoice={filterBtnChoice}
@@ -43,7 +44,7 @@ function App() {
             </svg>
             <b>Сортировка по:</b>
             <span onMouseOut={offSortVisible} onMouseOver={onSortVisible}>
-              популярности
+              {sortArr[sortChoice]}
             </span>
             <div
               onMouseOut={offSortVisible}
@@ -51,9 +52,14 @@ function App() {
               style={{ visibility: sortVisible }}
               className={styles.choiceSort}>
               <ul>
-                <li>популярности</li>
-                <li>по цене</li>
-                <li>по алфавиту</li>
+                {sortArr.map((el, index) => (
+                  <li
+                    className={sortChoice == index ? styles.itemSortAct : styles.itemSortNotAct}
+                    onClick={() => setSortChoice(index)}
+                    key={el + index}>
+                    {el}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
