@@ -1,0 +1,103 @@
+
+.wrapperCard{
+    margin-right: 25px;
+    margin-top: 25px;
+    width: 280px;
+    height: 459px;
+    img{
+        margin:  10px;
+        margin-bottom: 0px;
+    }
+    .cartTitle{
+        text-align: center;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: 0.01em;
+        margin-bottom: 15px;
+    }
+    .cardOption{
+        background: #F3F3F3;
+        border-radius: 10px;
+        width: 100%;
+        height: 85px;
+        padding: 7px;
+        margin-bottom: 17px;
+        .upOpt{
+            margin-bottom: 7px;
+        }
+        .optChoice{
+            background: #FFFFFF;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+            border-radius: 5px;
+            
+        }
+        button{ 
+            background: #F3F3F3;
+            height: 32px;
+            flex: 1;
+            height: 32px;
+            border: none;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
+            letter-spacing: 0.015em;
+            
+        }
+    }
+    .addCard{
+        padding-left: 2px;
+        b{
+            margin: auto 0;
+        }
+        button{
+            
+            cursor: pointer;
+            padding: 0 15px;
+            width: 155px;
+            height: 40px;
+            background: #FFFFFF;
+            border: 1px solid #EB5A1E;
+            border-radius: 30px;
+            b{
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 19px;
+                color: #EB5A1E;   
+            }
+            .circle{
+                color: #fff;
+                padding-top: 1px;
+                padding-right: 1px;
+                background: #EB5A1E;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 12px;
+                line-height: 19px;
+            }
+            &:hover{
+                background-color: #EB5A1E;
+                border: 1px solid #F3F3F3;
+                transition: fill 0.1s ease-in-out, color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+                svg{
+                    fill: #F3F3F3;
+                }
+                b{
+                    color: #F3F3F3;   
+                }
+                .circle{
+                    color: #EB5A1E;
+                    background: #F3F3F3;
+                }
+            }
+        }
+    }
+}

@@ -2,11 +2,11 @@
 .wrapper{
   margin: 0 auto;
   width: 1340px;
-  height: 1409px;
   background-color: #fff;
   border-radius: 10px;
+  padding-bottom: 30px;
   .filter{
-    height: 118px;
+    height: 90px;
     padding-top: 40px;
     padding-bottom: 30px;
     padding-left: 65px;
@@ -15,12 +15,72 @@
       width: 830px;
     }
     .sort{
-      background-color: blue;
-      width: 230px;
+      
+      position: relative;
+      svg{
+        margin-right: 6px;
+        margin-bottom: 1px;
+      }
+      b{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.015em;
+        margin-right: 6px;
+      }
+      span{
+        cursor: pointer;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.015em;
+        color: #FE5F1E;
+        border-bottom: 1px dashed #FE5F1E;
+      }
+      .choiceSort{
+        padding: 13px 0;
+        position: absolute;
+        right: 0;
+        top: 26px;
+        width: 132px;
+        height: 136px;
+        background: #FFFFFF;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        transition: visibility 1s ease-in-out;
+        li{
+          cursor: pointer;
+          height: 38px;
+          padding: 10px;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 17px;
+          letter-spacing: 0.015em;
+          &:hover{
+            background: rgba(254, 95, 30, 0.05);
+            color: #FE5F1E;
+          }
+        }
+      }
     }
   }
   .contentWrapper{
-    padding: 0 65px;
+    padding-left: 65px;
+    padding-right: 55px;
+    .titlePage{
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 39px;
+      letter-spacing: 0.01em;
+    
+    }
+    .content{
+      margin: 0 auto;
+    }
   }
 }
 

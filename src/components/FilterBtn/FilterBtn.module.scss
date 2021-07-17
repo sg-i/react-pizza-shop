@@ -1,14 +1,12 @@
 .wrapperFilterBtn{
-    button{
+    .notActiveBtn{
         cursor: pointer;
         padding: 0 30px;
         height: 46px;
         font-family: 'Inter', sans-serif;
         margin-right: 9px;
-        // background: #282828;
         background: #F9F9F9;
         border-radius: 30px;
-        // color: #fff;
         font-weight: 700;
         font-style: normal;
         font-size: 14px;
@@ -20,5 +18,24 @@
             border: 2px solid black;
         }
         
+    }
+    .activeBtn{
+        cursor: pointer;
+        padding: 0 30px;
+        height: 46px;
+        font-family: 'Inter', sans-serif;
+        margin-right: 9px;
+        background: #282828;
+        border-radius: 30px;
+        color: #fff;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.015em;
+        border: 2px solid #F9F9F9;;
+        
+               
     }
 }
