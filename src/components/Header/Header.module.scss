@@ -1,0 +1,74 @@
+
+.wrapperHeader{
+    padding-top: 50px;
+    padding-left: 77px;
+    padding-right: 60px;
+    height: 130px;
+    border-bottom: 1px solid #ececec;;
+    .leftHeader {
+        img{
+            margin-top: 5px;
+        }
+       .headerInfo{
+           margin-left: 10px;
+           b{
+            font-style: normal;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.01em;
+           }
+           span{
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            
+            color: #7B7B7B;
+           }
+       }
+    }
+    .rightHeader{
+        .basket{ 
+               
+            display: flex;
+            margin: auto 30px;
+            align-items: center;
+            border: none;
+            border-radius: 30px;
+            width: 150px;
+            height: 50px;
+           
+            color: #fff;
+            background: #FE5F1E;
+            cursor: pointer;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 19px;
+            font-family: 'Inter', sans-serif;
+            .busk{
+                width: 70px;
+            }
+            .countBuy{
+                width: 60px;
+                img{
+                    margin-bottom: -2px;
+                    margin-left: -10px;
+                }
+                b{
+                    position: relative;
+                    top: -1px;
+                    margin-left: 10px;
+                    
+                }
+            }
+            .line{
+                border-left: 1px solid rgba(255, 255, 255, 0.25);;
+                height: 60%; 
+            }
+        }
+
+    }
+}
