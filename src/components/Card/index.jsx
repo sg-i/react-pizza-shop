@@ -1,23 +1,43 @@
 import styles from './Card.module.scss';
-function Card() {
+import React from 'react';
+
+function Card({ id, name, category, imageUrl, price, rating, sizes, types }) {
+  const typesArr = ['тонкое', 'традиционное'];
+  const [activeType, setActiveType] = React.useState(types[0]);
+  const sizeArr = [26, 30, 40];
+  const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
   return (
     <div className={styles.wrapperCard}>
-      <img width={260} height={260} src="img/pizza/image 2-1.png" alt="" />
-      <div className={styles.cartTitle}>Чизбургер-пицца</div>
+      <img width={260} height={260} src={imageUrl} alt="" />
+      <div className={styles.cartTitle}>{name}</div>
       <div className={styles.cardOption}>
         <div className={styles.upOpt + ' d-flex'}>
-          <button className={styles.optChoice}>тонкое</button>
-          <button>традиционное</button>
+          {typesArr.map((type, index) => (
+            <button
+              disabled={!types.includes(index)}
+              onClick={() => setActiveType(index)}
+              className={index === activeType && styles.optChoice}>
+              {type}
+            </button>
+          ))}
         </div>
         <div className={styles.downOpt + ' d-flex'}>
-          <button>26 см.</button>
-          <button>30 см.</button>
-          <button className={styles.optChoice}>40 см.</button>
+          {sizeArr.map((size, index) => (
+            <button
+              disabled={!sizes.includes(size)}
+              onClick={() => setActiveSize(size)}
+              className={size === activeSize && styles.optChoice}>
+              {size + ' см.'}
+            </button>
+          ))}
         </div>
       </div>
       <div className={styles.addCard + ' d-flex justify-between'}>
-        <b>от 395 ₽</b>
-        <button className={' d-flex align-center justify-between'}>
+        <b>{price} ₽</b>
+        <button
+          // onClick={() => console.log(activeSize)}
+          className={' d-flex align-center justify-between'}>
           <svg
             width="12"
             height="12"

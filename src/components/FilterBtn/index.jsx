@@ -7,7 +7,7 @@ function FilterBtn({ setFilterBtnChoice, index, filterBtnChoice, title }) {
           console.log(index);
           setFilterBtnChoice(index);
         }}
-        className={filterBtnChoice == index ? styles.activeBtn : styles.notActiveBtn}>
+        className={filterBtnChoice === index ? styles.activeBtn : styles.notActiveBtn}>
         {title}
       </button>
     </div>
