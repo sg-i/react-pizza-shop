@@ -112,9 +112,6 @@ function Home() {
                   </ContentLoader>
                 </div>
               ))}
-          {/* {items.map((el) => (
-            <Card key={el.id + el.name} {...el} />
-          ))} */}
         </div>
       </div>
     </div>
