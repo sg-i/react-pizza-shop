@@ -41,7 +41,6 @@ function Home() {
             <FilterBtn
               key={elem + index}
               index={index}
-              // setFilterBtnChoice={setFilterBtnChoice}
               filterBtnChoice={filters.category}
               title={elem}
             />
