@@ -3,20 +3,24 @@ import { Card, FilterBtn } from '../';
 import styles from '../../App.module.scss';
 import store from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
-
+import ContentLoader from 'react-content-loader';
 const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortArr = [
   { name: 'популярности', type: 'popular' },
   { name: 'по цене', type: 'price' },
   { name: 'по алфавиту', type: 'alphabet ' },
 ];
+const isLoadingBlock = new Array(10);
+isLoadingBlock.fill(0);
+
 function Home() {
   const dispatch = useDispatch();
 
-  const { items, filters } = useSelector((state) => {
+  const { items, filters, isLoaded } = useSelector((state) => {
     return {
       items: state.pizzas.items,
       filters: state.filters,
+      isLoaded: state.pizzas.isLoaded,
     };
   });
 
@@ -82,13 +86,32 @@ function Home() {
       <div className={styles.contentWrapper}>
         <b className={styles.titlePage}>Все пиццы</b>
         <div className={styles.content + ' d-flex flex-wrap'}>
-          {items.map((el) =>
-            filters.category !== 0 ? (
-              el.category === filters.category && <Card key={el.id + el.name} {...el} />
-            ) : (
-              <Card key={el.id + el.name} {...el} />
-            ),
-          )}
+          {console.log(isLoaded, isLoadingBlock)}
+          {isLoaded
+            ? items.map((el) =>
+                filters.category !== 0 ? (
+                  el.category === filters.category && <Card key={el.id + el.name} {...el} />
+                ) : (
+                  <Card key={el.id + el.name} {...el} />
+                ),
+              )
+            : isLoadingBlock.map((el) => (
+                <div className={styles.contentLoading}>
+                  <ContentLoader
+                    speed={2}
+                    width={280}
+                    height={489}
+                    viewBox="0 0 280 460"
+                    backgroundColor="#ededed"
+                    foregroundColor="#ffffff">
+                    <circle cx="137" cy="130" r="120" />
+                    <rect x="146" y="416" rx="18" ry="18" width="127" height="35" />
+                    <rect x="40" y="271" rx="18" ry="18" width="202" height="35" />
+                    <rect x="0" y="317" rx="18" ry="18" width="280" height="75" />
+                    <rect x="0" y="416" rx="18" ry="18" width="68" height="35" />
+                  </ContentLoader>
+                </div>
+              ))}
           {/* {items.map((el) => (
             <Card key={el.id + el.name} {...el} />
           ))} */}

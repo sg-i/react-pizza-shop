@@ -94,6 +94,12 @@
     }
     .content{
       margin: 0 auto;
+      .contentLoading{
+        margin-right: 25px;
+        margin-top: 25px;
+        width: 280px;
+        height: 459px;
+      }
     }
   }
 }

@@ -1,11 +1,38 @@
 import styles from './Card.module.scss';
 import React from 'react';
-
+import ContentLoader from 'react-content-loader';
+import { useSelector } from 'react-redux';
 function Card({ id, name, category, imageUrl, price, rating, sizes, types }) {
   const typesArr = ['тонкое', 'традиционное'];
-  const [activeType, setActiveType] = React.useState(types[0]);
   const sizeArr = [26, 30, 40];
+
+  const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActiveSize] = React.useState(sizes[0]);
+
+  const { isLoaded } = useSelector((state) => {
+    return {
+      isLoaded: state.pizzas.isLoaded,
+    };
+  });
+
+  // return (
+  //   <div className={styles.wrapperCard}>
+  //     <ContentLoader
+  //       speed={2}
+  //       width={280}
+  //       height={460}
+  //       viewBox="0 0 280 460"
+  //       backgroundColor="#ededed"
+  //       foregroundColor="#ffffff">
+  //       <circle cx="137" cy="139" r="124" />
+  //       <rect x="146" y="419" rx="18" ry="18" width="127" height="33" />
+  //       <rect x="90" y="415" rx="0" ry="0" width="80" height="0" />
+  //       <rect x="40" y="279" rx="18" ry="18" width="202" height="25" />
+  //       <rect x="0" y="326" rx="18" ry="18" width="280" height="65" />
+  //       <rect x="0" y="419" rx="18" ry="18" width="68" height="33" />
+  //     </ContentLoader>
+  //   </div>
+  // );
 
   return (
     <div className={styles.wrapperCard}>
