@@ -2,9 +2,9 @@
 
 * ReactJS + hooks
 * Redux
-* redux-thunk
+* Redux-thunk
 * React-Router
-* axios
-* react-skeleton
-* json-server
+* Axios
+* React-skeleton
+* Json-server
 
