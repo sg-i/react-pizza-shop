@@ -63,7 +63,7 @@ function Card({ id, name, category, imageUrl, price, rating, sizes, types }) {
       <div className={styles.addCard + ' d-flex justify-between'}>
         <b>{price} ₽</b>
         <button
-          // onClick={() => console.log(activeSize)}
+          onClick={() => console.log(activeSize)}
           className={' d-flex align-center justify-between'}>
           <svg
             width="12"

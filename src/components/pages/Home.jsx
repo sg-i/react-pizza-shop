@@ -1,17 +1,36 @@
 import React from 'react';
 import { Card, FilterBtn } from '../';
 import styles from '../../App.module.scss';
-import store from '../../redux/store';
+// import store from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux';
 import ContentLoader from 'react-content-loader';
+import { setSortBy } from '../../redux/actions/filters';
 const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-const sortArr = [
-  { name: 'популярности', type: 'popular' },
-  { name: 'по цене', type: 'price' },
-  { name: 'по алфавиту', type: 'alphabet ' },
-];
+const sortArr = ['популярности', 'по цене', 'по алфавиту'];
 const isLoadingBlock = new Array(10);
 isLoadingBlock.fill(0);
+
+const sortByName = (a, b) => {
+  const nameA = a.name.toLowerCase();
+  const nameB = b.name.toLowerCase();
+  let result = 0;
+  if (nameA > nameB) {
+    result = 1;
+  } else if (nameB > nameA) {
+    result = -1;
+  }
+  return result;
+};
+const sortByRating = (a, b) => {
+  const ratingA = a.rating;
+  const ratingB = b.rating;
+  return ratingB - ratingA;
+};
+const sortByPrice = (a, b) => {
+  const priceA = a.price;
+  const priceB = b.price;
+  return priceA - priceB;
+};
 
 function Home() {
   const dispatch = useDispatch();
@@ -25,7 +44,7 @@ function Home() {
   });
 
   const [sortVisible, setSortVisible] = React.useState('hidden');
-  const [sortChoice, setSortChoice] = React.useState(0);
+
   const onSortVisible = () => {
     setSortVisible('visible');
   };
@@ -60,22 +79,34 @@ function Home() {
           </svg>
           <b>Сортировка по:</b>
           <span onMouseOut={offSortVisible} onMouseOver={onSortVisible}>
-            {sortArr[sortChoice].name}
+            {filters.sortBy}
           </span>
           <div
-            onMouseOut={offSortVisible}
-            onMouseOver={onSortVisible}
+            onMouseLeave={offSortVisible}
+            onMouseEnter={onSortVisible}
             style={{ visibility: sortVisible }}
             className={styles.choiceSort}>
             <ul>
               {sortArr.map((el, index) => (
                 <li
-                  className={sortChoice === index ? styles.itemSortAct : styles.itemSortNotAct}
+                  className={filters.sortBy === el ? styles.itemSortAct : styles.itemSortNotAct}
                   onClick={() => {
-                    setSortChoice(index);
+                    dispatch(setSortBy(el));
+                    switch (index) {
+                      case 0:
+                        items.sort(sortByRating);
+                        break;
+                      case 1:
+                        items.sort(sortByPrice);
+                        break;
+                      case 2:
+                        items.sort(sortByName);
+                        break;
+                    }
+                    offSortVisible();
                   }}
-                  key={el.type + index}>
-                  {el.name}
+                  key={el + index}>
+                  {el}
                 </li>
               ))}
             </ul>
@@ -85,7 +116,6 @@ function Home() {
       <div className={styles.contentWrapper}>
         <b className={styles.titlePage}>Все пиццы</b>
         <div className={styles.content + ' d-flex flex-wrap'}>
-          {console.log(isLoaded, isLoadingBlock)}
           {isLoaded
             ? items.map((el) =>
                 filters.category !== 0 ? (
