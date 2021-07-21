@@ -1,16 +1,21 @@
 import styles from './FilterBtn.module.scss';
-function FilterBtn({ setFilterBtnChoice, index, filterBtnChoice, title }) {
+import { setCategory } from '../../redux/actions/filters';
+import { useDispatch } from 'react-redux';
+import React from 'react';
+
+const FilterBtn = React.memo(function FilterBtn({ index, filterBtnChoice, title }) {
+  const dispatch = useDispatch();
+  const dispFunc = (index) => {
+    dispatch(setCategory(index));
+  };
   return (
     <div className={styles.wrapperFilterBtn}>
       <button
-        onClick={() => {
-          console.log(index);
-          setFilterBtnChoice(index);
-        }}
+        onClick={() => dispFunc(index)}
         className={filterBtnChoice === index ? styles.activeBtn : styles.notActiveBtn}>
         {title}
       </button>
     </div>
   );
-}
+});
 export default FilterBtn;

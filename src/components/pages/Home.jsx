@@ -2,16 +2,25 @@ import React from 'react';
 import { Card, FilterBtn } from '../';
 import styles from '../../App.module.scss';
 import store from '../../redux/store';
+import { useSelector, useDispatch } from 'react-redux';
 
-function Home({ pizza }) {
-  const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-  const sortArr = [
-    { name: 'популярности', type: 'popular' },
-    { name: 'по цене', type: 'price' },
-    { name: 'по алфавиту', type: 'alphabet ' },
-  ];
+const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+const sortArr = [
+  { name: 'популярности', type: 'popular' },
+  { name: 'по цене', type: 'price' },
+  { name: 'по алфавиту', type: 'alphabet ' },
+];
+function Home() {
+  const dispatch = useDispatch();
+
+  const { items, filters } = useSelector((state) => {
+    return {
+      items: state.pizzas.items,
+      filters: state.filters,
+    };
+  });
+
   const [sortVisible, setSortVisible] = React.useState('hidden');
-  const [filterBtnChoice, setFilterBtnChoice] = React.useState(0);
   const [sortChoice, setSortChoice] = React.useState(0);
   const onSortVisible = () => {
     setSortVisible('visible');
@@ -28,8 +37,8 @@ function Home({ pizza }) {
             <FilterBtn
               key={elem + index}
               index={index}
-              setFilterBtnChoice={setFilterBtnChoice}
-              filterBtnChoice={filterBtnChoice}
+              // setFilterBtnChoice={setFilterBtnChoice}
+              filterBtnChoice={filters.category}
               title={elem}
             />
           ))}
@@ -49,7 +58,6 @@ function Home({ pizza }) {
           <b>Сортировка по:</b>
           <span onMouseOut={offSortVisible} onMouseOver={onSortVisible}>
             {sortArr[sortChoice].name}
-            {/* {store.getState().sortBy} */}
           </span>
           <div
             onMouseOut={offSortVisible}
@@ -74,15 +82,16 @@ function Home({ pizza }) {
       <div className={styles.contentWrapper}>
         <b className={styles.titlePage}>Все пиццы</b>
         <div className={styles.content + ' d-flex flex-wrap'}>
-          {store
-            .getState()
-            .pizzas.items.map((el) =>
-              filterBtnChoice !== 0 ? (
-                el.category === filterBtnChoice && <Card key={el.id + el.name} {...el} />
-              ) : (
-                <Card key={el.id + el.name} {...el} />
-              ),
-            )}
+          {items.map((el) =>
+            filters.category !== 0 ? (
+              el.category === filters.category && <Card key={el.id + el.name} {...el} />
+            ) : (
+              <Card key={el.id + el.name} {...el} />
+            ),
+          )}
+          {/* {items.map((el) => (
+            <Card key={el.id + el.name} {...el} />
+          ))} */}
         </div>
       </div>
     </div>
