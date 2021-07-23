@@ -23,7 +23,6 @@ const cart = (state = initialState, action) => {
     }
 
     case 'DLT_ONE_PIZZA': {
-      let test = false;
       let testId = 0;
       for (let i = 0; i < state.items.length; i++) {
         if (

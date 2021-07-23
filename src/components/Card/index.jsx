@@ -1,19 +1,12 @@
 import styles from './Card.module.scss';
 import React from 'react';
-import ContentLoader from 'react-content-loader';
-import { useSelector } from 'react-redux';
+
 function Card({ count = 0, onClick, id, name, category, imageUrl, price, rating, sizes, types }) {
   const typesArr = ['тонкое', 'традиционное'];
   const sizeArr = [26, 30, 40];
 
   const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActiveSize] = React.useState(sizes[0]);
-
-  const { isLoaded } = useSelector((state) => {
-    return {
-      isLoaded: state.pizzas.isLoaded,
-    };
-  });
 
   return (
     <div className={styles.wrapperCard}>
@@ -23,6 +16,7 @@ function Card({ count = 0, onClick, id, name, category, imageUrl, price, rating,
         <div className={styles.upOpt + ' d-flex'}>
           {typesArr.map((type, index) => (
             <button
+              key={type + index}
               disabled={!types.includes(index)}
               onClick={() => setActiveType(index)}
               className={index === activeType && styles.optChoice}>
@@ -33,6 +27,7 @@ function Card({ count = 0, onClick, id, name, category, imageUrl, price, rating,
         <div className={styles.downOpt + ' d-flex'}>
           {sizeArr.map((size, index) => (
             <button
+              key={size + index}
               disabled={!sizes.includes(size)}
               onClick={() => setActiveSize(size)}
               className={size === activeSize && styles.optChoice}>

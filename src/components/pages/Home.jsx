@@ -140,8 +140,8 @@ function Home() {
               )
             : Array(12)
                 .fill(0)
-                .map((el) => (
-                  <div className={styles.contentLoading}>
+                .map((el, index) => (
+                  <div key={el + index} className={styles.contentLoading}>
                     <ContentLoader
                       speed={2}
                       width={280}
