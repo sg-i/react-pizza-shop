@@ -81,26 +81,18 @@
             background: #FFFFFF;
             border: 1px solid #EB5A1E;
             border-radius: 30px;
+            svg{
+                margin-left: 10px;
+            }
             b{
                 font-style: normal;
                 font-weight: bold;
                 font-size: 16px;
                 line-height: 19px;
                 color: #EB5A1E;   
+                margin-right: 15px;
             }
-            .circle{
-                color: #fff;
-                padding-top: 1px;
-                padding-right: 1px;
-                background: #EB5A1E;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 12px;
-                line-height: 19px;
-            }
+            
             &:hover{
                 background-color: #EB5A1E;
                 border: 1px solid #F3F3F3;
@@ -111,10 +103,7 @@
                 b{
                     color: #F3F3F3;   
                 }
-                .circle{
-                    color: #EB5A1E;
-                    background: #F3F3F3;
-                }
+                
             }
         }
     }

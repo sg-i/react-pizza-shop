@@ -1,14 +1,13 @@
 import React from 'react';
 import { Card, FilterBtn } from '../';
 import styles from '../../App.module.scss';
-// import store from '../../redux/store';
+
 import { useSelector, useDispatch } from 'react-redux';
 import ContentLoader from 'react-content-loader';
 import { setSortBy } from '../../redux/actions/filters';
+import { setPizzaCart } from '../../redux/actions/cart';
 const filterPizzaArr = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 const sortArr = ['популярности', 'по цене', 'по алфавиту'];
-const isLoadingBlock = new Array(10);
-isLoadingBlock.fill(0);
 
 const sortByName = (a, b) => {
   const nameA = a.name.toLowerCase();
@@ -31,18 +30,20 @@ const sortByPrice = (a, b) => {
   const priceB = b.price;
   return priceA - priceB;
 };
-
 function Home() {
   const dispatch = useDispatch();
 
-  const { items, filters, isLoaded } = useSelector((state) => {
+  const { items, cartItems, filters, isLoaded } = useSelector((state) => {
     return {
       items: state.pizzas.items,
+      cartItems: state.cart.items,
       filters: state.filters,
       isLoaded: state.pizzas.isLoaded,
     };
   });
-
+  const getPizzaData = (elem) => {
+    dispatch(setPizzaCart(elem));
+  };
   const [sortVisible, setSortVisible] = React.useState('hidden');
 
   const onSortVisible = () => {
@@ -54,6 +55,7 @@ function Home() {
 
   return (
     <div className={styles.wrapper}>
+      {/* <button onClick={()=>}></button> */}
       <div className={styles.filter + ' d-flex justify-between align-center'}>
         <div className={styles.filterPizza + ' d-flex'}>
           {filterPizzaArr.map((elem, index) => (
@@ -119,28 +121,42 @@ function Home() {
           {isLoaded
             ? items.map((el) =>
                 filters.category !== 0 ? (
-                  el.category === filters.category && <Card key={el.id + el.name} {...el} />
+                  el.category === filters.category && (
+                    <Card
+                      count={cartItems[el.id] && cartItems[el.id].length}
+                      onClick={(obj) => getPizzaData(obj)}
+                      key={el.id + el.name}
+                      {...el}
+                    />
+                  )
                 ) : (
-                  <Card key={el.id + el.name} {...el} />
+                  <Card
+                    count={cartItems[el.id] && cartItems[el.id].length}
+                    onClick={(obj) => getPizzaData(obj)}
+                    key={el.id + el.name}
+                    {...el}
+                  />
                 ),
               )
-            : isLoadingBlock.map((el) => (
-                <div className={styles.contentLoading}>
-                  <ContentLoader
-                    speed={2}
-                    width={280}
-                    height={489}
-                    viewBox="0 0 280 460"
-                    backgroundColor="#ededed"
-                    foregroundColor="#ffffff">
-                    <circle cx="137" cy="130" r="120" />
-                    <rect x="146" y="416" rx="18" ry="18" width="127" height="35" />
-                    <rect x="40" y="271" rx="18" ry="18" width="202" height="35" />
-                    <rect x="0" y="317" rx="18" ry="18" width="280" height="75" />
-                    <rect x="0" y="416" rx="18" ry="18" width="68" height="35" />
-                  </ContentLoader>
-                </div>
-              ))}
+            : Array(12)
+                .fill(0)
+                .map((el) => (
+                  <div className={styles.contentLoading}>
+                    <ContentLoader
+                      speed={2}
+                      width={280}
+                      height={489}
+                      viewBox="0 0 280 460"
+                      backgroundColor="#ededed"
+                      foregroundColor="#ffffff">
+                      <circle cx="137" cy="130" r="120" />
+                      <rect x="146" y="416" rx="18" ry="18" width="127" height="35" />
+                      <rect x="40" y="271" rx="18" ry="18" width="202" height="35" />
+                      <rect x="0" y="317" rx="18" ry="18" width="280" height="75" />
+                      <rect x="0" y="416" rx="18" ry="18" width="68" height="35" />
+                    </ContentLoader>
+                  </div>
+                ))}
         </div>
       </div>
     </div>

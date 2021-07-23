@@ -86,6 +86,201 @@
       }
     }
   }
+  .cartWrapper{
+    margin: 0 auto;
+    padding-top: 14px;
+    padding-left: 230px;
+    padding-right: 230px;
+    .empty{
+      margin: 0 auto;
+      padding-top: 80px;
+      width: 547px;
+      height: 523px;
+      b{
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39px;
+        /* identical to box height */
+        margin-bottom: 20px;
+        letter-spacing: 0.01em;
+      }
+      button{
+        cursor: pointer;
+        background: #282828;
+        border-radius: 30px;
+        width: 210px;
+        height: 46px; 
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: 0.015em;
+        margin-top: 20px;
+        color: #FFFFFF;
+        border: none;
+      }
+      span{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 145.4%;
+        /* or 26px */
+        margin-bottom: 20px;
+        text-align: center;
+        letter-spacing: 0.01em;
+
+        color: #777777;
+      }
+    }
+    .cartWindow{
+      height: 650px;
+     
+      .cartHeader{
+        height: 72px;
+        
+        .headerLeft{
+          
+          svg{
+            margin-right: 10px;
+            margin-bottom: 8px;
+          }
+          b{
+            bottom: 0px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            letter-spacing: 0.01em;
+            margin-bottom: 6px;
+          }
+        }
+        .headerRight{
+          cursor: pointer;
+          svg{
+            margin-right: 3px;
+          }
+          span{
+            margin-top: 3px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #B6B6B6;
+            margin-right: 5px;
+          }
+        }
+      }
+      .itemWrapper{
+        height: 420px;
+        overflow: auto;
+        .item{
+   
+          height: 140px;
+          border-top: 1px solid #F4F4F4;
+          img{
+            margin-right: 15px;
+            
+          }
+          .itemInfo{
+            width: 440px;
+            b{
+              font-style: normal;
+              font-weight: bold;
+              font-size: 22px;
+              line-height: 27px;
+              letter-spacing: 0.01em;
+            }
+            span{
+              font-style: normal;
+              font-weight: normal;
+              font-size: 18px;
+              line-height: 22px;
+              letter-spacing: 0.01em;
+              color: #8D8D8D;
+            }
+          }
+          .counter{
+            svg{
+              cursor: pointer;
+            }
+            b{
+              font-style: normal;
+              font-weight: bold;
+              font-size: 22px;
+              line-height: 27px;
+              margin-left:7px;
+              margin-right: 7px;
+              letter-spacing: 0.01em;
+            }
+           }
+          .sumItem{
+            text-align: center;
+            width: 300px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 27px;
+            letter-spacing: 0.01em;
+          }
+          .dltItem{
+            cursor: pointer;
+            width: 42px;
+            height: 32px;
+          }
+        }
+      }
+      .allOrder{
+        padding-top: 10px;
+        height: 60px;
+        span{
+          font-style: normal;
+          font-weight: normal;
+          font-size: 22px;
+          line-height: 27px;
+          letter-spacing: 0.01em;
+          .sum{
+            color: #FE5F1E;
+            margin-right: 8px;
+          }
+        }
+      }
+      .footerCart{
+        button{
+          width: 211px;
+          height: 55px;
+          border-radius: 30px;
+          cursor: pointer;
+        } 
+        .btnBack{
+          background-color: #fff;
+          border: 1px solid #D3D3D3;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 19px;
+          text-align: center;
+          color: #CACACA;
+          svg{
+            margin-right: 10px;
+          }
+          
+        }
+        .btnPay{
+          background: #FE5F1E;
+          border-radius: 30px;
+          border: none;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 19px;
+          text-align: center;
+          color: #FFFFFF;
+        }
+
+      }
+    }
+
+  }
   .contentWrapper{
     padding-left: 65px;
     padding-right: 55px;

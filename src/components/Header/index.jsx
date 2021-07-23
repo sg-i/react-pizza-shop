@@ -1,6 +1,15 @@
 import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 function Header() {
+  const { totalSum, totalCount } = useSelector((state) => {
+    return {
+      totalSum: state.cart.totalSum,
+      totalCount: state.cart.totalCount,
+    };
+  });
+
   return (
     <div className={styles.wrapperHeader + ' d-flex justify-between'}>
       <Link to="/">
@@ -15,11 +24,11 @@ function Header() {
       <div className={styles.rightHeader}>
         <Link to="/cart">
           <button className={styles.basket}>
-            <div className={styles.busk}>520 ₽</div>
+            <div className={styles.busk}>{totalSum + ' ₽'}</div>
             <div className={styles.line}></div>
             <div className={styles.countBuy}>
               <img width={18} height={18} src="img/cartIcon.svg" alt="" />
-              <b>1</b>
+              <b>{totalCount}</b>
             </div>
           </button>
         </Link>
