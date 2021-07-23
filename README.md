@@ -1,4 +1,4 @@
-[React-Pizza-Shop](https://pizza-shop-1.herokuapp.com/)
+# [React-Pizza-Shop](https://pizza-shop-1.herokuapp.com/)
 # Stack:
 * ReactJS + hooks
 * Redux
