@@ -1,4 +1,4 @@
-# [React-Pizza-Shop](https://pizza-shop-1.herokuapp.com/) <-- check Demo
+# React-Pizza-Shop
 # Stack:
 * ReactJS + hooks
 * Redux
